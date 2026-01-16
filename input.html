@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks to Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        input[type=number] {
+            padding: 10px;
+            width: 80px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p.output {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Marks to Grade</h1>
+
+        <p>Enter marks out of 100:</p>
+        <input type="number" id="marks" placeholder="Marks" min="0" max="100">
+        <br>
+        <button onclick="calculateGrade()">Check Grade</button>
+
+        <p class="output" id="result"></p>
+    </div>
+
+    <script>
+        function calculateGrade() {
+            const marks = Number(document.getElementById('marks').value);
+            const result = document.getElementById('result');
+
+            if (marks < 0 || marks > 100 || isNaN(marks)) {
+                result.textContent = "Please enter a valid number between 0 and 100!";
+                result.style.color = "red";
+                return;
+            }
+
+            let grade = '';
+
+            if (marks >= 90) grade = 'A+';
+            else if (marks >= 80) grade = 'A';
+            else if (marks >= 70) grade = 'B';
+            else if (marks >= 60) grade = 'C';
+            else if (marks >= 50) grade = 'D';
+            else grade = 'F';
+
+            result.textContent = `Your Grade: ${grade}`;
+            result.style.color = "#28a745";
+        }
+    </script>
+
+</body>
+
+</html>
